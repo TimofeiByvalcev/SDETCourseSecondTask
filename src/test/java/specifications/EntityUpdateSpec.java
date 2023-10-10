@@ -10,7 +10,7 @@ import io.restassured.specification.ResponseSpecification;
 /**
  * Class provides a specification for patch by id request.
  */
-public class EntityUpdateSpec {
+public class EntityUpdateSpec extends BaseSpec {
 
     /**
      * Method specify URL and content type of request.
@@ -27,18 +27,10 @@ public class EntityUpdateSpec {
     /**
      * Method specify an expected status code and content type of response.
      */
-    public static ResponseSpecification updateResponseNoContent204Spec() {
+    public static ResponseSpecification updateResponseSuccessSpec() {
         return new ResponseSpecBuilder()
                 .expectStatusCode(204)
                 .build();
 
-    }
-
-    /**
-     * Method for install specifications.
-     */
-    public static void installUpdateSpec(RequestSpecification request, ResponseSpecification response204) {
-        RestAssured.requestSpecification = request;
-        RestAssured.responseSpecification = response204;
     }
 }

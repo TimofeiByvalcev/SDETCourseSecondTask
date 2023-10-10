@@ -6,14 +6,11 @@ import io.qameta.allure.Owner;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import requestModels.AdditionRequest;
 import requestModels.EntityRequest;
 import responseModels.EntityCreationResponse;
 import responseModels.EntityResponse;
 import specifications.EntityUpdateSpec;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static io.restassured.RestAssured.*;
@@ -23,7 +20,7 @@ import static specifications.EntityDeleteSpec.*;
 import static specifications.EntityGetAllSpec.*;
 import static specifications.EntityGetSpec.*;
 import static specifications.EntityUpdateSpec.updateRequestSpec;
-import static specifications.EntityUpdateSpec.updateResponseNoContent204Spec;
+import static specifications.EntityUpdateSpec.updateResponseSuccessSpec;
 
 /**
  * Class provides an API tests.
@@ -38,10 +35,9 @@ public class Tests extends BaseTest {
     @Test
     public void createEntityTest() {
 
-        installCreateSpec(createRequestSpec(Endpoints.getBaseUrl()), createResponseSpecOK200());
+        installSpec(createRequestSpec(Endpoints.getBaseUrl()), createResponseSuccessSpec());
 
-        EntityRequest entityRequest = new EntityRequest(new AdditionRequest("Stop", 12345),
-                new ArrayList<>(Arrays.asList(1, 2, 3)), "Super title", true);
+        EntityRequest entityRequest = DataPreparation.createEntity();
 
         EntityCreationResponse entityId = new EntityCreationResponse(given()
                 .body(entityRequest)
@@ -65,11 +61,11 @@ public class Tests extends BaseTest {
     @Test
     public void getEntityByIdTest() {
 
-        EntityRequest entityRequest = new EntityRequest(new AdditionRequest("Stop", 12345),
-                new ArrayList<>(Arrays.asList(1, 2, 3)), "Super title", true);
+        EntityRequest entityRequest = DataPreparation.createEntity();
+
         String creationResponse = DataPreparation.generateEntity(entityRequest).getId();
 
-        installGetSpec(getRequestSpec(Endpoints.getBaseUrl()), getResponseSpecOK200());
+        installSpec(getRequestSpec(Endpoints.getBaseUrl()), getResponseSuccessSpec());
 
         EntityResponse entityResponse = given()
                 .when()
@@ -87,12 +83,12 @@ public class Tests extends BaseTest {
     @DisplayName("Delete entity by Id")
     @Test
     public void deleteEntityByIdTest() {
-        EntityRequest entityRequest = new EntityRequest(new AdditionRequest("Stop", 12345),
-                new ArrayList<>(Arrays.asList(1, 2, 3)), "Super title", true);
+
+        EntityRequest entityRequest = DataPreparation.createEntity();
 
         String entityId = DataPreparation.generateEntity(entityRequest).getId();
 
-        installDeleteSpec(deleteRequestSpec(Endpoints.getBaseUrl()), deleteResponseNoContent204Spec());
+        installSpec(deleteRequestSpec(Endpoints.getBaseUrl()), deleteResponseSuccessSpec());
         Response entityDeleteResponse = given()
                 .when()
                 .delete(Endpoints.getEntityDeleteId() + entityId);
@@ -105,7 +101,7 @@ public class Tests extends BaseTest {
     @DisplayName("Get all entities as list")
     @Test
     public void getAllEntitiesTest() {
-        installGetAllSpec(getAllRequestSpec(Endpoints.getBaseUrl()), getAllResponseSpecOK200());
+        installSpec(getAllRequestSpec(Endpoints.getBaseUrl()), getAllResponseSuccessSpec());
 
         List<EntityResponse> entities = given()
                 .when()
@@ -127,12 +123,11 @@ public class Tests extends BaseTest {
     @Test
     public void updateEntityByIdTest() {
 
-        EntityRequest entityRequest = new EntityRequest(new AdditionRequest("Stop", 12345),
-                new ArrayList<>(Arrays.asList(1, 2, 3)), "Super title patched", true);
+        EntityRequest entityRequest = DataPreparation.createEntity();
 
         String entityId = DataPreparation.generateEntity(entityRequest).getId();
 
-        EntityUpdateSpec.installUpdateSpec(updateRequestSpec(Endpoints.getBaseUrl()), updateResponseNoContent204Spec());
+        EntityUpdateSpec.installSpec(updateRequestSpec(Endpoints.getBaseUrl()), updateResponseSuccessSpec());
 
         Response entityUpdateResponse = given()
                 .body(entityRequest)

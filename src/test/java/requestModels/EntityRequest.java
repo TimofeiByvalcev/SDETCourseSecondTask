@@ -1,6 +1,9 @@
 package requestModels;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.beans.ConstructorProperties;
 import java.util.ArrayList;
@@ -14,21 +17,30 @@ public class EntityRequest {
     /**
      * Addition class object.
      */
+    @Getter
+    @Setter
     private AdditionRequest additionRequest;
 
     /**
      * List of important numbers.
      */
-    private ArrayList<Integer> important_numbers;
+    @Getter
+    @Setter
+    @JsonProperty("important_numbers")
+    private ArrayList<Integer> importantNumbers;
 
     /**
      * Entity title.
      */
+    @Getter
+    @Setter
     private String title;
 
     /**
      * Entity status.
      */
+    @Getter
+    @Setter
     private boolean verified;
 
     /**
@@ -36,66 +48,10 @@ public class EntityRequest {
      * Takes as parameters addition, importantNumbers, title, verified.
      */
     @ConstructorProperties({"addition", "importantNumbers", "title", "verified"})
-    public EntityRequest(AdditionRequest additionRequest, ArrayList<Integer> important_numbers, String title, Boolean verified) {
+    public EntityRequest(AdditionRequest additionRequest, ArrayList<Integer> importantNumbers, String title, Boolean verified) {
         this.additionRequest = additionRequest;
-        this.important_numbers = important_numbers;
+        this.importantNumbers = importantNumbers;
         this.title = title;
-        this.verified = verified;
-    }
-
-    /**
-     * Method returns an Addition class object.
-     */
-    public AdditionRequest getAddition() {
-        return additionRequest;
-    }
-
-    /**
-     * Method returns a list of important numbers.
-     */
-    public ArrayList<Integer> getImportant_numbers() {
-        return important_numbers;
-    }
-
-    /**
-     * Method returns an entity title.
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * Method returns an entity status.
-     */
-    public boolean isVerified() {
-        return verified;
-    }
-
-    /**
-     * Method set an Addition class object
-     */
-    public void setAddition(AdditionRequest additionRequest) {
-        this.additionRequest = additionRequest;
-    }
-
-    /**
-     * Method set a list of important numbers.
-     */
-    public void setImportant_numbers(ArrayList<Integer> important_numbers) {
-        this.important_numbers = important_numbers;
-    }
-
-    /**
-     * Method set an entity title.
-     */
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    /**
-     * Method set an entity status.
-     */
-    public void setVerified(boolean verified) {
         this.verified = verified;
     }
 }

@@ -1,6 +1,8 @@
 package responseModels;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.beans.ConstructorProperties;
 import java.util.ArrayList;
@@ -14,26 +16,36 @@ public class EntityResponse {
     /**
      * Entity id.
      */
+    @Getter
+    @Setter
     private String id;
 
     /**
      * Entity title.
      */
+    @Getter
+    @Setter
     private String title;
 
     /**
      * Entity status.
      */
+    @Getter
+    @Setter
     private Boolean verified;
 
     /**
      * An AdditionResponse object.
      */
+    @Getter
+    @Setter
     private AdditionResponse additionResponse;
 
     /**
      * Entity important numbers.
      */
+    @Getter
+    @Setter
     private ArrayList<Integer> importantNumbers;
 
     /**
@@ -42,46 +54,11 @@ public class EntityResponse {
      */
     @ConstructorProperties({"id", "title", "verified", "addition", "importantNumbers"})
     public EntityResponse(String id, String title,
-                          Boolean verified, AdditionResponse additionResponse, ArrayList<Integer> important_numbers) {
+                          Boolean verified, AdditionResponse additionResponse, ArrayList<Integer> importantNumbers) {
         this.id = id;
         this.title = title;
         this.verified = verified;
         this.additionResponse = additionResponse;
-        this.importantNumbers = important_numbers;
-    }
-
-    /**
-     * Method return an entity id.
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * Method returns an entity title.
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * Method returns an entity status.
-     */
-    public boolean isVerified() {
-        return verified;
-    }
-
-    /**
-     * Method returns AdditionResponse object.
-     */
-    public AdditionResponse getAddition() {
-        return additionResponse;
-    }
-
-    /**
-     * Method returns a list of important numbers.
-     */
-    public ArrayList<Integer> getImportantNumbers() {
-        return importantNumbers;
+        this.importantNumbers = importantNumbers;
     }
 }

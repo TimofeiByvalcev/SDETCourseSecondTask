@@ -10,7 +10,7 @@ import io.restassured.specification.ResponseSpecification;
 /**
  * Class provides a specification for create request.
  */
-public class EntityCreateSpec {
+public class EntityCreateSpec extends BaseSpec {
 
     /**
      * Method specify URL and content type of request.
@@ -26,17 +26,9 @@ public class EntityCreateSpec {
     /**
      * Method specify an expected status code of response.
      */
-    public static ResponseSpecification createResponseSpecOK200() {
+    public static ResponseSpecification createResponseSuccessSpec() {
         return new ResponseSpecBuilder()
                 .expectStatusCode(200)
                 .build();
-    }
-
-    /**
-     * Method for install specifications.
-     */
-    public static void installCreateSpec(RequestSpecification request, ResponseSpecification response200) {
-        RestAssured.requestSpecification = request;
-        RestAssured.responseSpecification = response200;
     }
 }

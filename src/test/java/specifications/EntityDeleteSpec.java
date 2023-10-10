@@ -10,7 +10,7 @@ import io.restassured.specification.ResponseSpecification;
 /**
  * Class provides a specification for delete request.
  */
-public class EntityDeleteSpec {
+public class EntityDeleteSpec extends BaseSpec {
 
     /**
      * Method specify URL and content type of request.
@@ -26,18 +26,9 @@ public class EntityDeleteSpec {
     /**
      * Method specify an expected status code of response.
      */
-    public static ResponseSpecification deleteResponseNoContent204Spec() {
+    public static ResponseSpecification deleteResponseSuccessSpec() {
         return new ResponseSpecBuilder()
                 .expectStatusCode(204)
                 .build();
-
-    }
-
-    /**
-     * Method for install specifications.
-     */
-    public static void installDeleteSpec(RequestSpecification request, ResponseSpecification response204) {
-        RestAssured.requestSpecification = request;
-        RestAssured.responseSpecification = response204;
     }
 }

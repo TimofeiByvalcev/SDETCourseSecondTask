@@ -1,6 +1,8 @@
 package responseModels;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.beans.ConstructorProperties;
 
@@ -14,6 +16,8 @@ public class EntityCreationResponse {
     /**
      * Created entity id.
      */
+    @Getter
+    @Setter
     private String id;
 
     /**
@@ -21,12 +25,5 @@ public class EntityCreationResponse {
      */
     public EntityCreationResponse(String id) {
         this.id = id;
-    }
-
-    /**
-     * Method get an entity id.
-     */
-    public String getId() {
-        return id;
     }
 }

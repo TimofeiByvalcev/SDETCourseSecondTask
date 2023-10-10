@@ -10,7 +10,7 @@ import io.restassured.specification.ResponseSpecification;
 /**
  * Class provides a specification for get by id request.
  */
-public class EntityGetSpec {
+public class EntityGetSpec extends BaseSpec {
 
     /**
      * Method specify URL and content type of request.
@@ -26,18 +26,10 @@ public class EntityGetSpec {
     /**
      * Method specify an expected status code and content type of response.
      */
-    public static ResponseSpecification getResponseSpecOK200() {
+    public static ResponseSpecification getResponseSuccessSpec() {
         return new ResponseSpecBuilder()
                 .expectStatusCode(200)
                 .expectContentType(ContentType.JSON)
                 .build();
-    }
-
-    /**
-     * Method for install specifications.
-     */
-    public static void installGetSpec(RequestSpecification request, ResponseSpecification response200) {
-        RestAssured.requestSpecification = request;
-        RestAssured.responseSpecification = response200;
     }
 }

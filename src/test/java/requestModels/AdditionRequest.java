@@ -1,6 +1,8 @@
 package requestModels;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.beans.ConstructorProperties;
 
@@ -13,11 +15,15 @@ public class AdditionRequest {
     /**
      * Additional info.
      */
+    @Getter
+    @Setter
     private String additionalInfo;
 
     /**
      * Additional number.
      */
+    @Getter
+    @Setter
     private Integer additionalNumber;
 
     /**
@@ -27,34 +33,6 @@ public class AdditionRequest {
     @ConstructorProperties({"additional_info", "additional_number"})
     public AdditionRequest(String additionalInfo, Integer additionalNumber) {
         this.additionalInfo = additionalInfo;
-        this.additionalNumber = additionalNumber;
-    }
-
-    /**
-     * Method returns an additional info.
-     */
-    public String getAdditionalInfo() {
-        return additionalInfo;
-    }
-
-    /**
-     * Method set an additional info.
-     */
-    public void setAdditionalInfo(String additionalInfo) {
-        this.additionalInfo = additionalInfo;
-    }
-
-    /**
-     * Method return an additional number.
-     */
-    public Integer getAdditionalNumber() {
-        return additionalNumber;
-    }
-
-    /**
-     * Method set an additional number
-     */
-    public void setAdditionalNumber(Integer additionalNumber) {
         this.additionalNumber = additionalNumber;
     }
 }

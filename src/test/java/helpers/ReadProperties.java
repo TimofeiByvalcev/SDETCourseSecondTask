@@ -10,9 +10,9 @@ public class ReadProperties {
     /**
      * ReadProperties() method read properties from file and if it is impossible throws an exception.
      */
-    public static void readProperties() {
+    public static void readProperties(String property) {
         try {
-            System.getProperties().load(ClassLoader.getSystemResourceAsStream("test.properties"));
+            System.getProperties().load(ClassLoader.getSystemResourceAsStream(property));
         } catch (IOException e) {
             throw new RuntimeException("The properties file cannot be read", e);
         }
