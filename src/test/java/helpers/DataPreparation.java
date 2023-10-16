@@ -23,7 +23,7 @@ import static specifications.EntityGetSpec.getResponseSuccessSpec;
  */
 public class DataPreparation {
 
-    public static Integer[] convertStringArrayToIntegerArray(String[] stringArray) {
+    public static Integer[] convertStringToIntegerArray(String[] stringArray) {
         Integer[] importantNumbers = Arrays.stream(stringArray).map(Integer::valueOf).toArray(Integer[]::new);
         return importantNumbers;
     }
@@ -31,7 +31,7 @@ public class DataPreparation {
     public static EntityRequest createEntity() {
         EntityRequest entityRequest = new EntityRequest(new AdditionRequest(ReadProperties.readProperty("entity.additional.info"),
                 Integer.valueOf(ReadProperties.readProperty("entity.additional.number"))),
-                new ArrayList<Integer>(Arrays.asList(convertStringArrayToIntegerArray(ReadProperties.readProperty("entity.important.numbers").split("")))),
+                new ArrayList<Integer>(Arrays.asList(convertStringToIntegerArray(ReadProperties.readProperty("entity.important.numbers").split("")))),
                 ReadProperties.readProperty("entity.title"),
                 ReadProperties.readProperty("entity.verified").equals("true"));
         return entityRequest;

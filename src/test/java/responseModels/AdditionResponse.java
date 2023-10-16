@@ -11,28 +11,24 @@ import java.beans.ConstructorProperties;
  * Class provides response model for the part of the entity response model.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Getter
+@Setter
 public class AdditionResponse {
 
     /**
      * Addition id.
      */
-    @Getter
-    @Setter
     public Integer id;
 
     /**
      * Additional info.
      */
-    @Getter
-    @Setter
     @JsonProperty("additional_info")
     public String additionalInfo;
 
     /**
      * Additional number.
      */
-    @Getter
-    @Setter
     @JsonProperty("additional_number")
     public Integer additionalNumber;
 

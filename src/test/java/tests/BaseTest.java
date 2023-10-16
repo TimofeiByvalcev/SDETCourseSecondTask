@@ -16,9 +16,9 @@ public class BaseTest {
         ReadProperties.readProperties("test.properties");
     }
 
-    @BeforeEach
+    /*@BeforeEach
     public void readTestEntityProperties(){
         ReadProperties.readProperties("test-entity.properties");
     }
-
+*/
 }

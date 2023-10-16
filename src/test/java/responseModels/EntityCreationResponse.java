@@ -11,13 +11,13 @@ import java.beans.ConstructorProperties;
  * Class provides a response model for entity creation.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Getter
+@Setter
 public class EntityCreationResponse {
 
     /**
      * Created entity id.
      */
-    @Getter
-    @Setter
     private String id;
 
     /**

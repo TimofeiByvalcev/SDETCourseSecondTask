@@ -12,35 +12,29 @@ import java.util.ArrayList;
  * Class provides a request model for entity.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Getter
+@Setter
 public class EntityRequest {
 
     /**
      * Addition class object.
      */
-    @Getter
-    @Setter
     private AdditionRequest additionRequest;
 
     /**
      * List of important numbers.
      */
-    @Getter
-    @Setter
     @JsonProperty("important_numbers")
     private ArrayList<Integer> importantNumbers;
 
     /**
      * Entity title.
      */
-    @Getter
-    @Setter
     private String title;
 
     /**
      * Entity status.
      */
-    @Getter
-    @Setter
     private boolean verified;
 
     /**

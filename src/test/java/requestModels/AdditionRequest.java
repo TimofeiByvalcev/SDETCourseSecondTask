@@ -10,20 +10,18 @@ import java.beans.ConstructorProperties;
  * Class provides request model for the part of the entity request model.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Getter
+@Setter
 public class AdditionRequest {
 
     /**
      * Additional info.
      */
-    @Getter
-    @Setter
     private String additionalInfo;
 
     /**
      * Additional number.
      */
-    @Getter
-    @Setter
     private Integer additionalNumber;
 
     /**

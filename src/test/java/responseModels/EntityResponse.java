@@ -11,41 +11,33 @@ import java.util.ArrayList;
  * Class provides a response model for getting an entity.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Getter
+@Setter
 public class EntityResponse {
 
     /**
      * Entity id.
      */
-    @Getter
-    @Setter
     private String id;
 
     /**
      * Entity title.
      */
-    @Getter
-    @Setter
     private String title;
 
     /**
      * Entity status.
      */
-    @Getter
-    @Setter
     private Boolean verified;
 
     /**
      * An AdditionResponse object.
      */
-    @Getter
-    @Setter
     private AdditionResponse additionResponse;
 
     /**
      * Entity important numbers.
      */
-    @Getter
-    @Setter
     private ArrayList<Integer> importantNumbers;
 
     /**
